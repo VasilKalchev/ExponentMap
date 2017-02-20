@@ -1,0 +1,37 @@
+########################################
+# Syntax Coloring Map For ExponentMap
+########################################
+
+########################################
+# Datatypes (KEYWORD1)
+########################################
+
+# Classes
+ExponentMap                     KEYWORD1
+
+########################################
+# Methods and Functions (KEYWORD2)
+########################################
+
+# Global functions
+DEBUG                           KEYWORD2
+DEBUGLN                         KEYWORD2
+PRINT                           KEYWORD2
+PRINTLN                         KEYWORD2
+
+# class ExponentMap
+step_to_value                   KEYWORD2
+stepsCount                      KEYWORD2
+stepsRepeat                     KEYWORD2
+printTable                      KEYWORD2
+printCode                       KEYWORD2
+calculateMap                    KEYWORD2
+
+########################################
+# Constants (LITERAL1)
+########################################
+
+# Global constants
+optimalExponentDivider          LITERAL1
+
+EXPONENTMAP_DEBUG               LITERAL1
