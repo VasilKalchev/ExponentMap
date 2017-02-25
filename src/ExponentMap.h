@@ -33,8 +33,6 @@ Include file for ExponentMap class.
 #include <inttypes.h>
 #include <math.h>
 
-const float optimalExponentDivider = 1.5;
-
 // If "EXPONENTMAP_DEBUG" is already defined - don't overwrite it.
 #ifndef EXPONENTMAP_DEBUG
   /// Turns the debugging messages on or off.
@@ -63,13 +61,23 @@ const float optimalExponentDivider = 1.5;
   #define PRINTLN(x) std::cout << x << std::endl;
 #endif
 
+#if EXPONENTMAP_DEBUG
+  #warning "ExponentMap: Debugging messages are enabled."
+#endif
+
+const char EXPONENTMAP_VERSION[] = "1.0"; ///< The version if the library.
+
+/// This is constant used to calculate the optimal steps for a given maximum value.
+const float optimalExponentDivider = 1.5;
 
 /**
 This class calculates an exponential function (from 0 to
 a specified value) based on the required steps. The
-function is stored in an array with idexes equal to the
+function is stored in an array with idexes being the
 steps. The template specifies the integer size to be used
 for the array (the default is 32 bits unsigned integer).
+
+@note: The equation is taken from here: https://diarmuid.ie/blog/pwm-exponential-led-fading-on-arduino-or-other-platforms/
 */
 template <class T = uint32_t> class ExponentMap {
 public:
@@ -107,14 +115,14 @@ public:
   /// Copy constructor
   ExponentMap(const ExponentMap& other)
   : _map(new T[other._steps + 1]) {
-    DEBUGLN(F("Copy constructor"));
+    DEBUGLN(F("Copy constructor called."));
     _steps = other._steps;
     memcpy(_map, other._map, sizeof(T) * (_steps + 1));
   }
 
   /// Move contructor
   ExponentMap(ExponentMap&& other) {
-    DEBUGLN(F("Move constructor"));
+    DEBUGLN(F("Move constructor called."));
     _steps = other._steps;
     other._steps = 0;
     _map = other._map;
@@ -124,7 +132,7 @@ public:
   /// Copy assignment operator
   ExponentMap& operator=(const ExponentMap& other) {
     if (&other != this) {
-      DEBUGLN(F("Copy assignment operator"));
+      DEBUGLN(F("Copy assignment operator called."));
       _steps = other._steps;
       delete [] _map;
       _map = nullptr;
@@ -137,7 +145,7 @@ public:
   /// Move assignment operator
   ExponentMap operator=(ExponentMap&& other) {
     if (&other != this) {
-      DEBUGLN(F("Move assignment operator"));
+      DEBUGLN(F("Move assignment operator called."));
       _steps = other._steps;
       other._steps = 0;
       delete [] _map;
@@ -147,12 +155,11 @@ public:
     return *this;
   }
 
-  /**
-  The destructor deletes the allocated memory for the array.
-  */
+
+  /// The destructor deletes the allocated memory for the array.
   ~ExponentMap() noexcept {
     delete [] _map;
-    DEBUGLN(F("Deleted the map array"));
+    DEBUGLN(F("Deleted the map array."));
   }
 
   /**
@@ -161,8 +168,8 @@ public:
   @param step - the step for which a value is requested
   @returns the corresponding value
   */
-  T step_to_value(T step) const noexcept {
-    if (step <= _steps + 1 && step >= 0) {
+  T stepToValue(T step) const noexcept {
+    if (step <= _steps && step >= 0) {
       return _map[step];
     } else {
       return 0;
@@ -170,27 +177,27 @@ public:
   }
 
   /**
-  @see step_to_value();
+  @see stepToValue();
   @param step - the step for which a value is requested
   @returns the corresponding value
   */
   T operator()(T step) const noexcept {
-    return step_to_value(step);
+    return stepToValue(step);
   }
 
   /**
   This function returns the number of steps. It is useful
-  when the number if steps is not specified in the constructor
+  when the number of steps is not specified in the constructor
   and is automatically calculated.
   @see ExponentMap(T max_value);
   @returns the number of steps
   */
   T stepsCount() const noexcept {
-    return _steps + 1;
+    return _steps;
   }
 
   /**
-  Checks if the chosen combination of steps - maximum value
+  Checks if the chosen combination of steps and maximum value
   generated a table with repeating values.
   @returns true if there are repeating values
   */
@@ -212,7 +219,7 @@ public:
   */
   constexpr void printTable() const noexcept {
     PRINT(F("Exponent map with ")); PRINT(_steps); PRINT(F(" steps and "));
-    PRINT(_map[_steps + 1]); PRINTLN(F(" max value:"));
+    PRINT(_map[_steps]); PRINTLN(F(" max value:"));
 
     PRINTLN(F("Step:\tValue:"));
     for (T step = 0; step <= _steps; step++) {
@@ -226,11 +233,11 @@ public:
   */
   constexpr void printCode() const noexcept {
     char dataType[9] = {0};
-    if (_map[_steps+1] > 4294967295ull) {
+    if (_map[_steps] > 4294967295ull) {
       strcpy(dataType, "uint64_t");
-    } else if (_map[_steps+1] > 65535ul) {
+    } else if (_map[_steps] > 65535ul) {
       strcpy(dataType, "uint32_t");
-    } else if (_map[_steps+1] > 255u) {
+    } else if (_map[_steps] > 255u) {
       strcpy(dataType, "uint16_t");
     } else {
       strcpy(dataType, "uint8_t");
@@ -251,7 +258,7 @@ public:
 
 private:
   /**
-  Calculates the step-value array. Called from the constructors.
+  Calculates the step-value array.
   @param max_value - the larges value
   @param stepsResolutionConstant - the exponent divider
   */
@@ -261,7 +268,7 @@ private:
     DEBUG(F("Step-resolution constant: ")); DEBUGLN(stepsResolutionConstant);
 
     _map = new T[_steps + 1];
-    DEBUG(F("Created the map array with length of ")); DEBUG(_steps + 1);
+    DEBUG(F("Created the map array with length of ")); DEBUG(_steps);
     DEBUG(F(" and address at ")); DEBUGLN((int)&_map);
 
     DEBUGLN(F("Step:\tValue:"));
@@ -275,5 +282,5 @@ private:
     DEBUGLN();
   }
   T _steps; ///< The number of steps
-  T* _map; /// Pointer to the map array
+  T* _map; ///< Pointer to the map array
 };
