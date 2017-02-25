@@ -1,0 +1,14 @@
+/**
+@mainpage ExponentMap
+
+/**
+@example object_construction.ino
+
+This example demonstrates how to construct an object and print the generated array.
+*/
+
+/**
+@example linear_output.ino
+
+This example demonstrates how to actually use the object to get values for fading an LED.
+*/

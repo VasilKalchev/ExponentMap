@@ -30,4 +30,5 @@ install:
   - mkdir -p $HOME/Arduino/libraries
   - ln -s $PWD $HOME/Arduino/libraries/.
 script:
-  - buildExampleSketch testing
+  - buildExampleSketch object_construction.ino
+  - buildExampleSketch linear_output.ino
