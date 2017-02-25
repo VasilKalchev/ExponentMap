@@ -1,0 +1,68 @@
+ExponentMap
+===========
+
+*Generates an exponentially growing array based on provided number of steps and maximum value.*
+
+[![Build Status](https://travis-ci.org/VasilKalchev/ExponentMap.svg?branch=master)](https://travis-ci.org/VasilKalchev/ExponentMap)
+[![release](https://img.shields.io/badge/release-1.0.0-yellow.svg)](https://github.com/VasilKalchev/ExponentMap/releases)
+[![documentation](https://img.shields.io/badge/docs-doxygen-green.svg)](https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/index.html)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/mit-license.php)
+
+**The generated array can be used to control a PWM output perceived by humans (brigthness, sound...). Changing the power of an output device exponentially counteracts the logarithmic nature of the human perception to achieve lineality.**
+
+
+Resources
+=========
+ - [Examples][examples]
+ - [API reference][doxygen classes]
+ - [Lates release][latest release]
+
+Features
+========
+ - Configurable number of steps and max value.
+ - Automatic calculation of optimum number of steps.
+
+Use case
+========
+
+
+How it works
+============
+The library consists of a single class **ExponentMap**, which generates the array based on the parameters it was constructed with.
+```c++
+
+```
+
+### Basic example
+
+
+
+License
+=======
+The MIT License (MIT)
+
+Copyright (c) 2016 Vasil Kalchev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+[doxygen]: https://vasilkalchev.github.io/ExponentMap/doc/html/index.html
+[examples]: https://github.com/VasilKalchev/ExponentMap/tree/master/examples
+[doxygen classes]: https://vasilkalchev.github.io/ExponentMap/doc/html/annotated.html
+[latest release]: https://github.com/VasilKalchev/ExponentMap/releases/latest
+[wiki]: 404
