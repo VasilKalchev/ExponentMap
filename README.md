@@ -27,7 +27,7 @@ How it works
 The first two plots demonstrate that a linearly changing output in time is perceived by a person logarithmically. And the second two plots demonstrate that an exponentially chaning output in time is perceived by a person linearly.
 ![plots](https://raw.githubusercontent.com/VasilKalchev/ExponentMap/master/doc/Images/plots.png)
 
-Example exponent map:
+Example "exponent map":
 
 | Step   | Value  |
 | ------ |--------|
