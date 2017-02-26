@@ -113,8 +113,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[doxygen]: https://vasilkalchev.github.io/ExponentMap/doc/html/index.html
+[doxygen]: https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/index.html
 [examples]: https://github.com/VasilKalchev/ExponentMap/tree/master/examples
-[doxygen classes]: https://vasilkalchev.github.io/ExponentMap/doc/html/annotated.html
+[doxygen classes]: https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/annotated.html
 [latest release]: https://github.com/VasilKalchev/ExponentMap/releases/latest
 [wiki]: 404
