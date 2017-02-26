@@ -49,12 +49,16 @@ Include file for ExponentMap class.
     #define DEBUGLN(x) std::cout << x << std::endl;
   #endif
 #else
+  /// Debug print
   #define DEBUG(x)
+  /// Debug print with newline
   #define DEBUGLN(x)
 #endif
 
 #ifdef ARDUINO_ARCH_AVR
+  /// Normal print
   #define PRINT(x) Serial.print(x);
+  /// Normal print with newline
   #define PRINTLN(x) Serial.println(x);
 #else
   #define PRINT(x) std::cout << x;
