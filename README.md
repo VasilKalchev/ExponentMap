@@ -27,6 +27,27 @@ How it works
 The first two plots demonstrate that a linearly changing output in time is perceived by a person logarithmically. And the second two plots demonstrate that an exponentially chaning output in time is perceived by a person linearly.
 ![plots](https://raw.githubusercontent.com/VasilKalchev/ExponentMap/master/doc/Images/plots.png)
 
+Example exponent map:
+| Tables        | Are           |
+| ------------- |:-------------:|
+| 0             | 0             |
+| col 2 is      | centered      |
+| zebra stripes | are neat      |
+0	0
+1	1
+2	2
+3	3
+4	5
+5	9
+6	15
+7	24
+8	39
+9	63
+10	101
+11	160
+12	255
+
+
 ### API
 The library consists of a single class **ExponentMap**, which generates the array based on the parameters it was constructed with. The first parameter is the desired number of steps and the second is the maximum value. If the number of steps is not specified, the optimal number of steps will be calculated automatically.
 ```c++
@@ -34,11 +55,13 @@ ExponentMap<byte> exp1(12, 255);
 ExponentMap<byte> exp2(255);
 ```
 
+
 To get the value for a given step use the function operator. Alternatively the method `stepToValue(step)` can be used.
 ```c++
 analogWrite(led, exp1(4));
 analogWrite(led, exp1.stepToValue(4));
 ```
+
 
 ### Basic example
 ```c++
