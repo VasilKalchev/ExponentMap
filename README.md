@@ -10,7 +10,7 @@ ExponentMap
 
 **The generated array can be used to control a PWM output perceived by humans (brigthness, sound...). Changing the power of an output device exponentially counteracts the logarithmic nature of the human perception.**
 
-*The equation for generating the array is taken from [Diarmuid][diarmuid]*
+*The equation for generating the array is taken from [Diarmuid][diarmuid].*
 
 
 Resources
