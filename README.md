@@ -28,24 +28,22 @@ The first two plots demonstrate that a linearly changing output in time is perce
 ![plots](https://raw.githubusercontent.com/VasilKalchev/ExponentMap/master/doc/Images/plots.png)
 
 Example exponent map:
-| Tables        | Are           |
-| ------------- |:-------------:|
-| 0             | 0             |
-| col 2 is      | centered      |
-| zebra stripes | are neat      |
-0	0
-1	1
-2	2
-3	3
-4	5
-5	9
-6	15
-7	24
-8	39
-9	63
-10	101
-11	160
-12	255
+
+| Step   | Value  |
+| ------ |--------|
+| 0      | 0      |
+| 1      | 1      |
+| 2      | 2      |
+| 3      | 3      |
+| 4      | 5      |
+| 5      | 9      |
+| 6      | 15     |
+| 7      | 25     |
+| 8      | 39     |
+| 9      | 63     |
+| 10     | 101    |
+| 11     | 160    |
+| 12     | 255    |
 
 
 ### API
