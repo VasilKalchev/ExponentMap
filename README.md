@@ -8,7 +8,9 @@ ExponentMap
 [![documentation](https://img.shields.io/badge/docs-doxygen-green.svg)](https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/index.html)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/mit-license.php)
 
-**The generated array can be used to control a PWM output perceived by humans (brigthness, sound...). Changing the power of an output device exponentially counteracts the logarithmic nature of the human perception. *The equation for generating the array is taken from [Diarmuid][diarmuid]***
+**The generated array can be used to control a PWM output perceived by humans (brigthness, sound...). Changing the power of an output device exponentially counteracts the logarithmic nature of the human perception.**
+
+*The equation for generating the array is taken from [Diarmuid][diarmuid]*
 
 
 Resources
