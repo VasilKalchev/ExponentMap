@@ -1,13 +1,15 @@
 ########################################
 # Syntax Coloring Map For ExponentMap
-########################################
 
 ########################################
 # Datatypes (KEYWORD1)
 ########################################
 
+# Enumerators
+
 # Classes
-EXPONENTMAP_DEBUG				KEYWORD1
+ExponentMap
+
 
 ########################################
 # Methods and Functions (KEYWORD2)
@@ -26,6 +28,7 @@ stepsRepeat						KEYWORD2
 printTable						KEYWORD2
 printCode						KEYWORD2
 calculateMap					KEYWORD2
+
 
 ########################################
 # Constants (LITERAL1)
