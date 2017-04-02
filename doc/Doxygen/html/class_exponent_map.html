@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ExponentMap
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Generates an exponentially growing array based on provided number of steps and maximum value.</div>
   </td>
@@ -96,6 +96,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad26460599fdc8c36953e37a4fb1feaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af18c892a76fb3060b886c8fffa881126"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_exponent_map.html#af18c892a76fb3060b886c8fffa881126">operator()</a> (T step) const noexcept</td></tr>
 <tr class="separator:af18c892a76fb3060b886c8fffa881126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a74e20b8aa5fe62c8ba038a300d1155"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_exponent_map.html#a7a74e20b8aa5fe62c8ba038a300d1155">valueToStep</a> (T value) const noexcept</td></tr>
+<tr class="separator:a7a74e20b8aa5fe62c8ba038a300d1155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f8aad1aa54b26c83c0b6ffac6c7ce3e"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_exponent_map.html#a8f8aad1aa54b26c83c0b6ffac6c7ce3e">stepsCount</a> () const noexcept</td></tr>
 <tr class="separator:a8f8aad1aa54b26c83c0b6ffac6c7ce3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf0de5abf6f65edeec877e93542c9022"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_exponent_map.html#abf0de5abf6f65edeec877e93542c9022">stepsRepeat</a> () const noexcept</td></tr>
@@ -522,6 +524,41 @@ template&lt;class T  = uint32_t&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the corresponding value </dd></dl>
+
+</div>
+</div>
+<a id="a7a74e20b8aa5fe62c8ba038a300d1155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a74e20b8aa5fe62c8ba038a300d1155">&sect;&nbsp;</a></span>valueToStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T  = uint32_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="class_exponent_map.html">ExponentMap</a>&lt; T &gt;::valueToStep </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This function is the reverse of <a class="el" href="class_exponent_map.html#ad26460599fdc8c36953e37a4fb1feaca">stepToValue()</a>. It takes a value and returns the closest corresponding step. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>- the value for which a step is requested </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the corresponding step </dd></dl>
 
 </div>
 </div>

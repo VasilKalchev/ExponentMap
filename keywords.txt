@@ -16,13 +16,14 @@ ExponentMap
 ########################################
 
 # Global functions
-DEBUG                           KEYWORD2
-DEBUGLN							KEYWORD2
-PRINT							KEYWORD2
-PRINTLN							KEYWORD2
+EM_DEBUG						KEYWORD2
+EM_DEBUGLN						KEYWORD2
+EM_PRINT                        KEYWORD2
+EM_PRINTLN                      KEYWORD2
 
 # class ExponentMap
-stepToValue				     	KEYWORD2
+stepToValue						KEYWORD2
+valueToSteps					KEYWORD2
 stepsCount						KEYWORD2
 stepsRepeat						KEYWORD2
 printTable						KEYWORD2

@@ -35,41 +35,41 @@ Include file for ExponentMap class.
 
 // If "EXPONENTMAP_DEBUG" is already defined - don't overwrite it.
 #ifndef EXPONENTMAP_DEBUG
-  /// Turns the debugging messages on or off.
-  #define EXPONENTMAP_DEBUG false ///< @note Default: false
+/// Turns the debugging messages on or off.
+#define EXPONENTMAP_DEBUG false ///< @note Default: false
 #endif
 
 #if EXPONENTMAP_DEBUG
-  #ifdef ARDUINO_ARCH_AVR
-    #include <Arduino.h>
-    #define DEBUG(x) Serial.print(x);
-    #define DEBUGLN(x) Serial.println(x);
-  #else
-    #define DEBUG(x) std::cout << x;
-    #define DEBUGLN(x) std::cout << x << std::endl;
-  #endif
+#ifdef ARDUINO_ARCH_AVR
+#include <Arduino.h>
+#define EM_DEBUG(x) Serial.print(x);
+#define EM_DEBUGLN(x) Serial.println(x);
 #else
-  /// Debug print
-  #define DEBUG(x)
-  /// Debug print with newline
-  #define DEBUGLN(x)
+#define EM_DEBUG(x) std::cout << x;
+#define EM_DEBUGLN(x) std::cout << x << std::endl;
+#endif
+#else
+/// Debug print
+#define EM_DEBUG(x)
+/// Debug print with newline
+#define EM_DEBUGLN(x)
 #endif
 
 #ifdef ARDUINO_ARCH_AVR
-  /// Normal print
-  #define PRINT(x) Serial.print(x);
-  /// Normal print with newline
-  #define PRINTLN(x) Serial.println(x);
+/// Normal print
+#define EM_PRINT(x) Serial.print(x);
+/// Normal print with newline
+#define EM_PRINTLN(x) Serial.println(x);
 #else
-  #define PRINT(x) std::cout << x;
-  #define PRINTLN(x) std::cout << x << std::endl;
+#define EM_PRINT(x) std::cout << x;
+#define EM_PRINTLN(x) std::cout << x << std::endl;
 #endif
 
 #if EXPONENTMAP_DEBUG
-  #warning "ExponentMap: Debugging messages are enabled."
+#warning "ExponentMap: Debugging messages are enabled."
 #endif
 
-const char EXPONENTMAP_VERSION[] = "1.0"; ///< The version if the library.
+const char EXPONENTMAP_VERSION[] = "1.0"; ///< The version of the library.
 
 /// This is constant used to calculate the optimal steps for a given maximum value.
 const float optimalExponentDivider = 1.5;
@@ -97,7 +97,7 @@ public:
   @param max_value - the largest value
   */
   ExponentMap(T max_value) noexcept {
-    _steps = round( 1 / (log10(2)/(log10(max_value)*optimalExponentDivider)) );
+    _steps = round( 1 / (log10(2) / (log10(max_value) * optimalExponentDivider)) );
     calculateMap(max_value, optimalExponentDivider);
   }
 
@@ -118,15 +118,15 @@ public:
 
   /// Copy constructor
   ExponentMap(const ExponentMap& other)
-  : _map(new T[other._steps + 1]) {
-    DEBUGLN(F("Copy constructor called."));
+    : _map(new T[other._steps + 1]) {
+    EM_DEBUGLN(F("Copy constructor called."));
     _steps = other._steps;
     memcpy(_map, other._map, sizeof(T) * (_steps + 1));
   }
 
   /// Move contructor
   ExponentMap(ExponentMap&& other) {
-    DEBUGLN(F("Move constructor called."));
+    EM_DEBUGLN(F("Move constructor called."));
     _steps = other._steps;
     other._steps = 0;
     _map = other._map;
@@ -136,7 +136,7 @@ public:
   /// Copy assignment operator
   ExponentMap& operator=(const ExponentMap& other) {
     if (&other != this) {
-      DEBUGLN(F("Copy assignment operator called."));
+      EM_DEBUGLN(F("Copy assignment operator called."));
       _steps = other._steps;
       delete [] _map;
       _map = nullptr;
@@ -149,7 +149,7 @@ public:
   /// Move assignment operator
   ExponentMap operator=(ExponentMap&& other) {
     if (&other != this) {
-      DEBUGLN(F("Move assignment operator called."));
+      EM_DEBUGLN(F("Move assignment operator called."));
       _steps = other._steps;
       other._steps = 0;
       delete [] _map;
@@ -163,7 +163,7 @@ public:
   /// The destructor deletes the allocated memory for the array.
   ~ExponentMap() noexcept {
     delete [] _map;
-    DEBUGLN(F("Deleted the map array."));
+    EM_DEBUGLN(F("Deleted the map array."));
   }
 
   /**
@@ -187,6 +187,31 @@ public:
   */
   T operator()(T step) const noexcept {
     return stepToValue(step);
+  }
+
+  /**
+  This function is the reverse of stepToValue(). It
+  takes a value and returns the closest corresponding step.
+  @param value - the value for which a step is requested
+  @returns the corresponding step
+  */
+  T valueToStep(T value) const noexcept {
+    T s = 0;
+    for (s = 0; s <= _steps; ++s) {
+      T values[3] = { 0 };
+      (s > 0) ? values[0] = stepToValue(s - 1) : values[0] = 0;
+      values[1] = stepToValue(s);
+      (s < _steps) ? values[2] = stepToValue(s + 1) : values[2] = 0;
+
+      for (uint8_t i = 0; i < 3; ++i) {
+        values[i] = abs(values[i] - value);
+      }
+
+      if (values[1] <= values[0] && values[1] <= values[2]) {
+        break;
+      }
+    }
+    return s;
   }
 
   /**
@@ -222,12 +247,12 @@ public:
   column - "Value".
   */
   constexpr void printTable() const noexcept {
-    PRINT(F("Exponent map with ")); PRINT(_steps); PRINT(F(" steps and "));
-    PRINT(_map[_steps]); PRINTLN(F(" max value:"));
+    EM_PRINT(F("Exponent map with ")); EM_PRINT(_steps); EM_PRINT(F(" steps and "));
+    EM_PRINT(_map[_steps]); EM_PRINTLN(F(" max value:"));
 
-    PRINTLN(F("Step:\tValue:"));
+    EM_PRINTLN(F("Step:\tValue:"));
     for (T step = 0; step <= _steps; step++) {
-      PRINT(step); PRINT(F("\t")); PRINTLN(_map[step]);
+      EM_PRINT(step); EM_PRINT(F("\t")); EM_PRINTLN(_map[step]);
     }
   }
 
@@ -247,16 +272,16 @@ public:
       strcpy(dataType, "uint8_t");
     }
 
-    PRINT(F("const ")); PRINT(dataType);
-    #ifdef ARDUINO_ARCH_AVR
-      PRINT(F("[] PROGMEM = {"));
-    #else
-      PRINT(F("[] = {"));
-    #endif
-      for (T i = 0; i < _steps; i++) {
-        PRINT(_map[i]); PRINT(F(", "));
-      }
-      PRINT(_map[_steps]); PRINTLN(F("};"));
+    EM_PRINT(F("const ")); EM_PRINT(dataType);
+#ifdef ARDUINO_ARCH_AVR
+    EM_PRINT(F("[] PROGMEM = {"));
+#else
+    EM_PRINT(F("[] = {"));
+#endif
+    for (T i = 0; i < _steps; i++) {
+      EM_PRINT(_map[i]); EM_PRINT(F(", "));
+    }
+    EM_PRINT(_map[_steps]); EM_PRINTLN(F("};"));
   }
   ///@}
 
@@ -267,23 +292,23 @@ private:
   @param stepsResolutionConstant - the exponent divider
   */
   void calculateMap(T max_value, double stepsResolutionConstant) {
-    DEBUG(F("Exponent map with ")); DEBUG(_steps);
-    DEBUG(F(" steps and ")); DEBUG(max_value); DEBUGLN(F(" max value"));
-    DEBUG(F("Step-resolution constant: ")); DEBUGLN(stepsResolutionConstant);
+    EM_DEBUG(F("Exponent map with ")); EM_DEBUG(_steps);
+    EM_DEBUG(F(" steps and ")); EM_DEBUG(max_value); EM_DEBUGLN(F(" max value"));
+    EM_DEBUG(F("Step-resolution constant: ")); EM_DEBUGLN(stepsResolutionConstant);
 
     _map = new T[_steps + 1];
-    DEBUG(F("Created the map array with length of ")); DEBUG(_steps);
-    DEBUG(F(" and address at ")); DEBUGLN((int)&_map);
+    EM_DEBUG(F("Created the map array with length of ")); EM_DEBUG(_steps);
+    EM_DEBUG(F(" and address at ")); EM_DEBUGLN((int)&_map);
 
-    DEBUGLN(F("Step:\tValue:"));
+    EM_DEBUGLN(F("Step:\tValue:"));
     for (T step = 0; step <= _steps; step++) {
       _map[step] = round(pow(2, (step / stepsResolutionConstant)) - 1);
       if (step == _steps) {
         _map[step] = max_value;
       }
-      DEBUG(step); DEBUG(F("\t")); DEBUGLN(_map[step]);
+      EM_DEBUG(step); EM_DEBUG(F("\t")); EM_DEBUGLN(_map[step]);
     }
-    DEBUGLN();
+    EM_DEBUGLN();
   }
   T _steps; ///< The number of steps
   T* _map; ///< Pointer to the map array

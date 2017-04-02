@@ -21,7 +21,7 @@
  * type for the array holding the function. If it is not
  * specified, it will default to 32 bits unsigned integer.
  */
-// This object will have 10 steps with a maximum value of 255.
+// This object will have 20 steps with a maximum value of 255.
 // The array will be of data type "byte".
 ExponentMap<byte> exp1(20, 255);
 
