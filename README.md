@@ -3,7 +3,7 @@ ExponentMap
 
 *Generates an exponentially growing array based on provided number of steps and maximum value.*
 
-[![Build Status](https://travis-ci.org/VaSe7u/ExponentMap.svg?branch=master)](https://travis-ci.org/VasilKalchev/ExponentMap)
+[![Build Status](https://travis-ci.org/VaSe7u/ExponentMap.svg?branch=master)](https://travis-ci.org/VaSe7u/ExponentMap)
 [![release](https://img.shields.io/badge/release-1.1.0-yellow.svg)](https://github.com/VaSe7u/ExponentMap/releases)
 [![documentation](https://img.shields.io/badge/docs-doxygen-green.svg)](https://VaSe7u.github.io/ExponentMap/doc/Doxygen/html/index.html)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/mit-license.php)
