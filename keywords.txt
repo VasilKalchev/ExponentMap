@@ -8,7 +8,7 @@
 # Enumerators
 
 # Classes
-ExponentMap
+ExponentMap						KEYWORD1
 
 
 ########################################
@@ -18,8 +18,8 @@ ExponentMap
 # Global functions
 EM_DEBUG						KEYWORD2
 EM_DEBUGLN						KEYWORD2
-EM_PRINT                        KEYWORD2
-EM_PRINTLN                      KEYWORD2
+EM_PRINT						KEYWORD2
+EM_PRINTLN						KEYWORD2
 
 # class ExponentMap
 stepToValue						KEYWORD2
