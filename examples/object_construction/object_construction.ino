@@ -11,7 +11,7 @@
  *
  */
 
-#include "ExponentMap.h"
+#include <ExponentMap.h>
 
 /*
  * The class's constructor takes the number of steps required

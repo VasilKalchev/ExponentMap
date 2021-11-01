@@ -20,7 +20,7 @@
  *
  */
 
-#include "ExponentMap.h"
+#include <ExponentMap.h>
 
 const byte led_pin = 3;
 
