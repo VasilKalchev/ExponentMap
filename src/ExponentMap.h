@@ -30,7 +30,7 @@ Include file for ExponentMap class.
 
 #pragma once
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <math.h>
 
 // If "EXPONENTMAP_DEBUG" is already defined - don't overwrite it.
@@ -40,6 +40,7 @@ Include file for ExponentMap class.
 #endif
 
 #if EXPONENTMAP_DEBUG
+#warning "ExponentMap: Debugging messages are enabled."
 #ifdef ARDUINO_ARCH_AVR
 #include <Arduino.h>
 #define EM_DEBUG(x) Serial.print(x);
@@ -65,14 +66,10 @@ Include file for ExponentMap class.
 #define EM_PRINTLN(x) std::cout << x << std::endl;
 #endif
 
-#if EXPONENTMAP_DEBUG
-#warning "ExponentMap: Debugging messages are enabled."
-#endif
-
-const char EXPONENTMAP_VERSION[] = "1.0"; ///< The version of the library.
+constexpr char EXPONENTMAP_VERSION[] = "1.0"; ///< The version of the library.
 
 /// This is constant used to calculate the optimal steps for a given maximum value.
-const float optimalExponentDivider = 1.5;
+constexpr float optimalExponentDivider = 1.5;
 
 /**
 This class calculates an exponential function (from 0 to
@@ -230,7 +227,7 @@ public:
   generated a table with repeating values.
   @returns true if there are repeating values
   */
-  constexpr bool stepsRepeat() const noexcept {
+  bool stepsRepeat() const noexcept {
     for (T i = 0; i < _steps; i++) {
       if (_map[i] == _map[i + 1]) {
         return true;
@@ -246,7 +243,7 @@ public:
   Prints the generated table. First column - "Step", second
   column - "Value".
   */
-  constexpr void printTable() const noexcept {
+  void printTable() const noexcept {
     EM_PRINT(F("Exponent map with ")); EM_PRINT(_steps); EM_PRINT(F(" steps and "));
     EM_PRINT(_map[_steps]); EM_PRINTLN(F(" max value:"));
 
@@ -260,7 +257,7 @@ public:
   Prints the code for creating the array directly. This is
   useful if you want to get rid of the class.
   */
-  constexpr void printCode() const noexcept {
+  void printCode() const noexcept {
     char dataType[9] = {0};
     if (_map[_steps] > 4294967295ull) {
       strcpy(dataType, "uint64_t");
