@@ -3,9 +3,9 @@ ExponentMap
 
 *Generates an exponentially growing array based on provided number of steps and maximum value.*
 
-[![Build Status](https://travis-ci.org/VasilKalchev/ExponentMap.svg?branch=master)](https://travis-ci.org/VasilKalchev/ExponentMap)
-[![release](https://img.shields.io/badge/release-1.0.0-yellow.svg)](https://github.com/VasilKalchev/ExponentMap/releases)
-[![documentation](https://img.shields.io/badge/docs-doxygen-green.svg)](https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/index.html)
+[![Build Status](https://travis-ci.org/VaSe7u/ExponentMap.svg?branch=master)](https://travis-ci.org/VaSe7u/ExponentMap)
+[![release](https://img.shields.io/badge/release-1.1.0-yellow.svg)](https://github.com/VaSe7u/ExponentMap/releases)
+[![documentation](https://img.shields.io/badge/docs-doxygen-green.svg)](https://VaSe7u.github.io/ExponentMap/doc/Doxygen/html/index.html)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/mit-license.php)
 
 **The generated array can be used to control a PWM output perceived by humans (brigthness, sound...). Changing the power of an output device exponentially counteracts the logarithmic nature of the human perception.**
@@ -115,9 +115,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[doxygen]: https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/index.html
-[examples]: https://github.com/VasilKalchev/ExponentMap/tree/master/examples
-[doxygen classes]: https://vasilkalchev.github.io/ExponentMap/doc/Doxygen/html/annotated.html
-[latest release]: https://github.com/VasilKalchev/ExponentMap/releases/latest
+[doxygen]: https://VaSe7u.github.io/ExponentMap/doc/Doxygen/html/index.html
+[examples]: https://github.com/VaSe7u/ExponentMap/tree/master/examples
+[doxygen classes]: https://VaSe7u.github.io/ExponentMap/doc/Doxygen/html/annotated.html
+[latest release]: https://github.com/VaSe7u/ExponentMap/releases/latest
 [diarmuid]: https://diarmuid.ie/blog/pwm-exponential-led-fading-on-arduino-or-other-platforms/
 [wiki]: 404
